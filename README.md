@@ -1,5 +1,7 @@
 # Last Stop Motel — 1.0.2
 
+![Last Stop Motel cover art: a neon motel sign and warmly lit rooms beside a rain-soaked road at dusk](docs/cover.png)
+
 A complete, offline, single-player Three.js management game. Inherit a roadside motel, run seven nights, settle the debt, and earn the right to keep the light on.
 
 ## Compact mobile layout
