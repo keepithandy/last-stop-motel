@@ -8,8 +8,8 @@
     "sha256": "f957699d3a1ec76f549e6436d40784c029cc73c55d8171e7b54770bd2f0f6f8a"
   },
   "README.md": {
-    "bytes": 6783,
-    "sha256": "6a2b4fff77f5c2ab07b8ca05191b2c0a6392b3fe3a011b86657716ac06590db8"
+    "bytes": 6800,
+    "sha256": "df931d08b01b4547dbb6a802b82ba2ccccfe95c7fd23b52fc34ff458a2cd2741"
   },
   "RELEASE-NOTES.md": {
     "bytes": 6025,
@@ -148,11 +148,11 @@
     "sha256": "f97a6a5d6022eb9cc0d91ecff4466c266e6a89334d096fd17351db6bf976d05f"
   },
   "docs/cover.png": {
-    "bytes": 2131882,
-    "sha256": "65a48ee8085b914482e0118770582bd6216b55fa244278a0e47b13448d65f0fa"
+    "bytes": 1681315,
+    "sha256": "ef74b545e4be23bfee982d517a6fab994cb893d9127fe9646aaebe5d1cabff87"
   },
   "docs/cover-prompt.txt": {
-    "bytes": 1135,
-    "sha256": "bf6907ec88a8c824aad0c28887115f418ec348119fc33a6f07f5153537adf5b1"
+    "bytes": 2036,
+    "sha256": "fecee549a251c6118831595ce8f5543c991559f724abb982b92d324939110e81"
   }
 }
