@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#101e2a">
+  <meta name="description" content="Run the last motel on Route 86. A complete 3D management game about late arrivals, long nights, and a second chance.">
+  <title>Last Stop Motel</title>
+  <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="assets/mobile.css">
+</head>
+<body>
+  <div id="app">
+    <canvas id="world" aria-label="Three dimensional motel. Use the room list to select rooms with a keyboard." tabindex="-1"></canvas>
+    <div id="scene-error" hidden></div>
+    <div class="vignette" aria-hidden="true"></div>
+    <header id="topbar"></header>
+    <aside id="left-panel"></aside>
+    <section id="room-panel" aria-label="Selected room"></section>
+    <nav id="toolbar" aria-label="Management"></nav>
+    <div id="world-controls"></div>
+    <div id="toasts" role="status" aria-live="polite"></div>
+    <div id="start-screen"></div>
+    <dialog id="modal" aria-labelledby="modal-title"></dialog>
+    <input id="import-save" type="file" accept=".json,application/json" hidden>
+  </div>
+  <noscript><div class="no-script">Last Stop Motel needs JavaScript enabled to run.</div></noscript>
+  <script src="assets/game.js" defer></script>
+</body>
+</html>

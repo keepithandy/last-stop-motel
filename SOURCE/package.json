@@ -1,0 +1,20 @@
+{
+  "name": "last-stop-motel",
+  "version": "1.0.2",
+  "private": true,
+  "type": "module",
+  "description": "A complete offline Three.js roadside motel management game.",
+  "scripts": {
+    "build": "node tools/build.mjs",
+    "test": "node --test tests/*.test.js",
+    "package": "python3 tools/package.py",
+    "dev": "vite"
+  },
+  "dependencies": {
+    "three": "0.185.1"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.2",
+    "vite": "8.2.2"
+  }
+}

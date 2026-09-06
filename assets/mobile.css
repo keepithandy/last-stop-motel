@@ -1,0 +1,53 @@
+/* 1.0.1 compact layout: one panel, readable controls, no stacked sidebars. */
+body.mobile-compact{background:#0c2027}
+.mobile-compact #app{width:100%;max-width:560px;min-height:320px;margin:0 auto;height:100dvh;overflow:hidden}
+.mobile-compact .vignette{background:linear-gradient(#0b253333,transparent 35%,#0a202b55)}
+.mobile-compact.playing #topbar{display:flex!important;flex-direction:column;align-items:stretch;justify-content:center;top:max(5px,env(safe-area-inset-top));left:6px;right:6px;min-height:0;gap:5px;padding:7px 10px;background:#142b30fa;border-radius:7px;backdrop-filter:none;box-shadow:none}
+.mobile-stats{display:flex;align-items:center;justify-content:space-between;gap:6px;white-space:nowrap;font-size:.75rem;line-height:1.5}
+.mobile-stats span{color:var(--muted)}.mobile-stats b{color:var(--ink);font-weight:600}.mobile-night{font-size:.8125rem}.mobile-cash{color:var(--gold);font-size:1rem}
+.mobile-clock{display:flex;align-items:center;justify-content:space-between;gap:6px;font-size:.8125rem}
+.mobile-clock>span{line-height:1.2}.mobile-clock>div{display:flex;align-items:center;gap:5px}
+.mobile-clock button{min-height:40px;padding:7px 11px;font-size:.875rem}.mobile-clock .square{padding:7px;min-width:40px}
+.mobile-compact #left-panel,.mobile-compact #room-panel{position:absolute;top:auto!important;bottom:calc(69px + env(safe-area-inset-bottom));left:6px;right:6px;width:auto;max-width:none;height:auto;min-height:0;max-height:min(38dvh,320px);background:#142b30fc;border-radius:9px;backdrop-filter:none;box-shadow:0 3px 14px #091d2944;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin}
+.mobile-compact.playing #left-panel{display:flex!important;flex-direction:column}
+.mobile-compact.playing.room-open #left-panel,.mobile-compact.playing.panel-collapsed #left-panel,.mobile-compact.playing.panel-collapsed #room-panel{display:none!important}
+.mobile-compact.playing #room-panel:not([hidden]){display:block}
+.mobile-compact .panel-heading{padding:8px 12px;min-height:45px;position:sticky;top:0;background:#142b30;z-index:1;gap:8px}
+.mobile-compact .panel-heading h2{font-family:var(--font);font-size:.9375rem;font-weight:650;display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.mobile-compact .panel-heading h2 small{font-size:.75rem;color:var(--muted);font-weight:400}
+.mobile-compact .panel-heading .eyebrow,.mobile-compact .panel-tip,.mobile-compact .panel-footer{display:none}
+.mobile-compact .panel-heading button{font-size:.8125rem;padding:5px 10px;min-height:36px;margin:0}
+.compact-prep,.compact-guest,.compact-room{padding:10px 12px 12px}
+.compact-prep>strong{font-size:.9375rem;font-weight:550}.compact-prep p,.compact-guest p,.compact-room p{font-size:.875rem;line-height:1.4;margin:6px 0 10px;color:var(--muted)}
+.inline-actions{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}.inline-actions button{flex:1;min-height:44px;padding:8px 9px;font-size:.875rem;white-space:nowrap}
+.mobile-compact .compact-room .wide{min-height:44px;font-size:.875rem;padding:9px;margin-top:7px}
+.guest-tabs{display:flex;gap:4px;overflow-x:auto;max-width:100%;margin:-3px 0 8px;padding:0 0 3px;overscroll-behavior:contain}
+.guest-tabs button{background:#254148;border:1px solid var(--line);padding:8px 11px;border-radius:4px;min-height:40px;font-size:.8125rem;white-space:nowrap}
+.guest-tabs .selected{color:var(--gold);border-color:var(--gold)}
+.compact-guest-info{display:flex;justify-content:space-between;gap:10px;align-items:baseline;flex-wrap:wrap}.compact-guest-info strong{font-size:.9375rem}.compact-guest-info span{font-size:.75rem;color:var(--muted)}
+.mobile-compact .patience{margin-top:5px;height:3px}
+.mobile-compact .room-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px;padding:7px;overflow:visible}
+.mobile-compact .room-row{min-height:59px;padding:7px 6px;gap:6px;overflow:hidden}.mobile-compact .room-number{font-size:1.125rem;min-width:30px}
+.mobile-compact .room-list-info{min-width:0;gap:4px}.mobile-compact .room-list-info strong{font-size:.8125rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.mobile-compact .room-list-info small{font-size:.75rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mobile-compact .room-list-info+span{display:none}.room-readout{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;font-size:.75rem;color:var(--muted);margin:2px 0 10px}.room-readout b{color:var(--ink)}.room-readout>strong{color:var(--gold);margin-left:auto;font-size:1rem}
+.mobile-compact .job-card{padding:7px 0 0;font-size:.875rem}.mobile-compact .job-card .meter-track{margin:7px 0 0}
+.compact-booking,.compact-request{border:1px solid #89765566;background:#35473c;padding:7px 10px 10px;border-radius:5px;margin:9px 0}.compact-booking p,.compact-request p{margin:2px 0 5px;color:var(--ink)}
+.mobile-compact.playing #toolbar{display:flex;bottom:max(5px,env(safe-area-inset-bottom));left:6px;right:6px;min-height:58px;padding:3px 4px;border-radius:7px;backdrop-filter:none;box-shadow:none}
+.mobile-compact .dock-main{width:100%;justify-content:space-between;gap:4px}.mobile-compact .dock-item{flex:1;min-width:0;min-height:50px;padding:5px 8px;display:flex;flex-direction:column;gap:2px;font-size:.8125rem}.mobile-compact .dock-item svg{width:19px;height:19px}.mobile-compact .nav-count{font-size:.75rem;right:8px;top:1px;height:18px;min-width:18px}
+.mobile-compact #world-controls{top:calc(101px + env(safe-area-inset-top));bottom:auto;left:9px;right:auto;transform:none;white-space:normal}
+.mobile-compact .camera-buttons{flex-direction:row;gap:5px;margin:0}.mobile-compact .camera-buttons button{display:block!important;width:40px;min-width:40px;height:40px;max-width:none;padding:6px;font-size:1rem;background:#19343bd9}.mobile-compact .camera-buttons .panel-toggle{width:auto;font-size:.8125rem;padding:5px 9px}
+.mobile-compact #toasts{top:calc(147px + env(safe-area-inset-top));width:calc(100% - 26px);max-width:420px}.mobile-compact .toast{animation:none;font-size:.8125rem;line-height:1.4;padding:9px 12px}
+.mobile-compact #start-screen{background:linear-gradient(90deg,#0c222adf,#0c222a66);display:flex;flex-direction:column;justify-content:center}
+.mobile-compact .start-copy{width:auto;max-width:420px;margin:22px 24px}.mobile-compact .route-tag,.mobile-compact .start-postcard,.mobile-compact .start-meta{display:none}
+.mobile-compact .start-copy>.eyebrow{font-size:.75rem}.mobile-compact .start-copy h1{font-size:clamp(3rem,12vw,4.5rem);line-height:.95;margin:12px 0 20px}.mobile-compact .start-desc{font-size:1rem;margin:0 0 18px}.mobile-compact .start-actions{max-width:none}.mobile-compact .start-actions button{min-height:47px}.mobile-compact .start-links{gap:22px;margin:17px 0 10px}.mobile-compact .start-links button{font-size:.875rem;min-height:44px}.mobile-compact .version{font-size:.75rem;display:block}
+.mobile-compact dialog{position:fixed;max-width:min(480px,calc(100vw - 14px));max-height:calc(100dvh - 22px - env(safe-area-inset-top) - env(safe-area-inset-bottom));border-radius:8px;overscroll-behavior:contain}
+.mobile-compact dialog::backdrop{backdrop-filter:none;background:#051b23d9}.mobile-compact .modal-shell,.mobile-compact .modal-shell.large{width:460px;max-width:100%}.mobile-compact .modal-head{padding:13px 16px;gap:8px}.mobile-compact .modal-head h2{font-size:1.5rem}.mobile-compact .modal-head .eyebrow{font-size:.75rem;letter-spacing:.06em}.mobile-compact .modal-body{padding:14px 16px 18px}.mobile-compact .modal-body p{font-size:.9375rem;line-height:1.55}.mobile-compact .modal-foot{padding:9px 16px;font-size:.75rem}
+.mobile-compact .modal-grid,.mobile-compact .cards-three,.mobile-compact .shop-grid,.mobile-compact .achievement-grid{grid-template-columns:1fr;gap:12px}
+.mobile-compact .large .summary-stats{grid-template-columns:1fr 1fr}.mobile-compact .shop-card{padding:13px 15px}.mobile-compact .shop-card h3{font-size:1.25rem}.mobile-compact .shop-card p:not(.eyebrow){font-size:.875rem;margin:7px 0}.mobile-compact .staff-avatar{display:none}.mobile-compact .shop-price{margin:6px 0}.mobile-compact .shop-card button{font-size:.875rem;min-height:44px}.mobile-compact .modal-body .wide{min-height:44px}
+.mobile-compact .objective-card{margin:14px 0;padding:13px}.mobile-compact .difficulty{padding:13px}.mobile-compact .difficulty-list{gap:8px;margin:15px 0}.mobile-compact .help-steps li{margin:9px 0}.mobile-compact .event-choices{gap:9px;margin:17px 0}.mobile-compact .event-choice{padding:13px 15px}.mobile-compact .event-choice strong{font-size:.9375rem}.mobile-compact .event-choice span{font-size:.8125rem}.mobile-compact .save-actions button{min-height:44px}.mobile-menu{display:grid;gap:3px}
+.mobile-compact #scene-error{top:36%;left:50%;max-width:none;width:calc(100% - 32px);padding:13px;font-size:.875rem;z-index:2}.mobile-compact #scene-error span{font-size:.8125rem}
+@media(max-height:550px){.mobile-compact #app{max-width:900px}.mobile-compact #left-panel,.mobile-compact #room-panel{left:auto;right:6px;width:min(47%,350px);bottom:69px;max-height:calc(100dvh - 174px)}.mobile-compact .room-list{grid-template-columns:1fr}.mobile-compact #world-controls{top:104px}.mobile-compact #start-screen{justify-content:flex-start;overflow:auto}.mobile-compact .start-copy h1{font-size:3rem}.mobile-compact .start-copy{max-width:380px;margin:20px 24px}.mobile-compact #toasts{left:25%;max-width:45%;width:auto}}
+@media(max-width:350px){.mobile-stats{gap:4px;font-size:.75rem}.mobile-cash{font-size:.9375rem}.mobile-clock>span{font-size:.75rem}.mobile-clock button{padding:7px 9px}.mobile-compact .room-list{grid-template-columns:1fr}.mobile-compact .room-readout{gap:7px;font-size:.75rem}}
+
+.mobile-compact.scene-unavailable .camera-buttons button:not(.panel-toggle){display:none!important}
+@media(max-height:550px){.mobile-compact.scene-unavailable #scene-error{left:12px;top:155px;transform:none;width:calc(53% - 24px);max-height:calc(100dvh - 230px);overflow:auto;margin:0}.mobile-compact.scene-unavailable #scene-error strong{font-size:.8125rem;margin-bottom:6px}.mobile-compact.scene-unavailable #scene-error span{font-size:.75rem;line-height:1.4}}

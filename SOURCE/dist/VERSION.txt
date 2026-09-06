@@ -1,0 +1,3 @@
+Last Stop Motel 1.0.2
+Three.js 0.185.1
+All game assets included. No network connection required.

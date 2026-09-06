@@ -1,0 +1,150 @@
+{
+  "PLAYER-GUIDE.html": {
+    "bytes": 6884,
+    "sha256": "2ee24584ae794aae9f8490d7a7098ff8218e7dfc286df293e809617ebbf511ca"
+  },
+  "README-FIRST.txt": {
+    "bytes": 1127,
+    "sha256": "f957699d3a1ec76f549e6436d40784c029cc73c55d8171e7b54770bd2f0f6f8a"
+  },
+  "README.md": {
+    "bytes": 6663,
+    "sha256": "403b79ded4f4965fb829cb17d4f6e116393910676e0bc10ba3c4bd5bf911fc50"
+  },
+  "RELEASE-NOTES.md": {
+    "bytes": 6025,
+    "sha256": "51cae51cba6734c27a2f61bacf178d815e5361607b468deb6f899ffe62da2758"
+  },
+  "THREE-LICENSE.txt": {
+    "bytes": 1081,
+    "sha256": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc"
+  },
+  "VERSION.txt": {
+    "bytes": 97,
+    "sha256": "28e41652b3aceae0bdb0153324176c4b285fec3a92281b7f95eade315c89da36"
+  },
+  "assets/game.js": {
+    "bytes": 622506,
+    "sha256": "9833dc54f631b5eabef28f89737a3b2e46d8b8c28466035c97f0528c5726bb27"
+  },
+  "assets/mobile.css": {
+    "bytes": 10134,
+    "sha256": "789b70428aa59050fce963437d97d838837b4a351f7d190ecada1d020ffae405"
+  },
+  "assets/style.css": {
+    "bytes": 44931,
+    "sha256": "7cb13a28116ec50a8ada9af34655c890ce05055f96cd654e795b6890bdbe9846"
+  },
+  "index.html": {
+    "bytes": 1386,
+    "sha256": "9752f8c075cdb31507835863831d4ba41aec896889564b4d2e1f4989d9259b50"
+  },
+  "SOURCE/src/audio.js": {
+    "bytes": 2807,
+    "sha256": "15e4b65e25349a1ff38c087c9ba7f885ad0667610fa13a2333e661df76002b21"
+  },
+  "SOURCE/src/content.js": {
+    "bytes": 12837,
+    "sha256": "e9724ffc24cee4bb1884a7f653a6db0c09265208e9b52164d2af00db91bc17bc"
+  },
+  "SOURCE/src/engine.js": {
+    "bytes": 28319,
+    "sha256": "930923fff1fb1ce31a6cb7ffacf57903e31a52bf1d2383954d5414a9fa7bfab8"
+  },
+  "SOURCE/src/main.js": {
+    "bytes": 57083,
+    "sha256": "8ae91e9ce347f074637cb9c1156444e2c4e964c4a1b8439f83d88a6408a53b17"
+  },
+  "SOURCE/src/scene.js": {
+    "bytes": 21759,
+    "sha256": "94ca282d38b265c05fbdd8e3784abe0e7e296c0ccd68e869757c4fa9a5fc463f"
+  },
+  "SOURCE/tools/build.mjs": {
+    "bytes": 678,
+    "sha256": "66cd2db3858f62d411d0a12bf1c5850c50bd7df3d84c566f0ec3a1db907306fb"
+  },
+  "SOURCE/tools/package.py": {
+    "bytes": 1943,
+    "sha256": "d559d415abb04559016c61c17f855d4bff4adfee6952f40b4f995192468155c5"
+  },
+  "SOURCE/tests/campaign.test.js": {
+    "bytes": 10016,
+    "sha256": "d7bd74e49b183cdfbe154496722d0e8238af2ec02e62a2579ea09c087861acac"
+  },
+  "SOURCE/tests/release.test.js": {
+    "bytes": 2140,
+    "sha256": "2ea4440936261c646b671c8c41381806400f99e5621c63adbe9e65210ca37b63"
+  },
+  "SOURCE/dist/PLAYER-GUIDE.html": {
+    "bytes": 6884,
+    "sha256": "2ee24584ae794aae9f8490d7a7098ff8218e7dfc286df293e809617ebbf511ca"
+  },
+  "SOURCE/dist/README-FIRST.txt": {
+    "bytes": 1127,
+    "sha256": "f957699d3a1ec76f549e6436d40784c029cc73c55d8171e7b54770bd2f0f6f8a"
+  },
+  "SOURCE/dist/README.md": {
+    "bytes": 6663,
+    "sha256": "403b79ded4f4965fb829cb17d4f6e116393910676e0bc10ba3c4bd5bf911fc50"
+  },
+  "SOURCE/dist/RELEASE-NOTES.md": {
+    "bytes": 6025,
+    "sha256": "51cae51cba6734c27a2f61bacf178d815e5361607b468deb6f899ffe62da2758"
+  },
+  "SOURCE/dist/THREE-LICENSE.txt": {
+    "bytes": 1081,
+    "sha256": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc"
+  },
+  "SOURCE/dist/VERSION.txt": {
+    "bytes": 97,
+    "sha256": "28e41652b3aceae0bdb0153324176c4b285fec3a92281b7f95eade315c89da36"
+  },
+  "SOURCE/dist/assets/game.js": {
+    "bytes": 622506,
+    "sha256": "9833dc54f631b5eabef28f89737a3b2e46d8b8c28466035c97f0528c5726bb27"
+  },
+  "SOURCE/dist/assets/mobile.css": {
+    "bytes": 10134,
+    "sha256": "789b70428aa59050fce963437d97d838837b4a351f7d190ecada1d020ffae405"
+  },
+  "SOURCE/dist/assets/style.css": {
+    "bytes": 44931,
+    "sha256": "7cb13a28116ec50a8ada9af34655c890ce05055f96cd654e795b6890bdbe9846"
+  },
+  "SOURCE/dist/index.html": {
+    "bytes": 1386,
+    "sha256": "9752f8c075cdb31507835863831d4ba41aec896889564b4d2e1f4989d9259b50"
+  },
+  "SOURCE/dist/qa/landscape.html": {
+    "bytes": 469,
+    "sha256": "c98f67dec54950c0c57e5def1096543e25fa5e494632f2cdda2d0cbc300b3d37"
+  },
+  "SOURCE/dist/qa/mobile.html": {
+    "bytes": 540,
+    "sha256": "1c1fcc8f48ea8eba52e9f8bb258aed21ddaee956ab53d5367693c2a2365b777a"
+  },
+  "SOURCE/dist/qa/small.html": {
+    "bytes": 465,
+    "sha256": "992e2214a0f47260a316445ac5cfa6c3108739f0a03027c8b396f30907d023a2"
+  },
+  "SOURCE/package.json": {
+    "bytes": 455,
+    "sha256": "afc841e94d316d1f686bbb18151b8f7b97f5f7aebe6558e6d9ee3a06305d18a3"
+  },
+  "SOURCE/package-lock.json": {
+    "bytes": 39522,
+    "sha256": "a7f4b7587a0066d86bedfbc48436d785f9f74af3b7b38548445b1c7a392a4e01"
+  },
+  "SOURCE/README.md": {
+    "bytes": 6663,
+    "sha256": "403b79ded4f4965fb829cb17d4f6e116393910676e0bc10ba3c4bd5bf911fc50"
+  },
+  "SOURCE/RELEASE-NOTES.md": {
+    "bytes": 6025,
+    "sha256": "51cae51cba6734c27a2f61bacf178d815e5361607b468deb6f899ffe62da2758"
+  },
+  "SOURCE/vite.config.js": {
+    "bytes": 137,
+    "sha256": "f97a6a5d6022eb9cc0d91ecff4466c266e6a89334d096fd17351db6bf976d05f"
+  }
+}
