@@ -24,8 +24,8 @@
     "sha256": "28e41652b3aceae0bdb0153324176c4b285fec3a92281b7f95eade315c89da36"
   },
   "assets/game.js": {
-    "bytes": 622506,
-    "sha256": "9833dc54f631b5eabef28f89737a3b2e46d8b8c28466035c97f0528c5726bb27"
+    "bytes": 622517,
+    "sha256": "e27f02e5316e4130cf965af82422fa40956391b03e84797972ffa61e00a5e4d5"
   },
   "assets/mobile.css": {
     "bytes": 10134,
@@ -52,8 +52,8 @@
     "sha256": "930923fff1fb1ce31a6cb7ffacf57903e31a52bf1d2383954d5414a9fa7bfab8"
   },
   "SOURCE/src/main.js": {
-    "bytes": 57083,
-    "sha256": "8ae91e9ce347f074637cb9c1156444e2c4e964c4a1b8439f83d88a6408a53b17"
+    "bytes": 57102,
+    "sha256": "84608a58bd12b820af15ca6bf0a8a07e595c108bcd31c26b4cf35f58051079db"
   },
   "SOURCE/src/scene.js": {
     "bytes": 21759,
@@ -100,8 +100,8 @@
     "sha256": "28e41652b3aceae0bdb0153324176c4b285fec3a92281b7f95eade315c89da36"
   },
   "SOURCE/dist/assets/game.js": {
-    "bytes": 622506,
-    "sha256": "9833dc54f631b5eabef28f89737a3b2e46d8b8c28466035c97f0528c5726bb27"
+    "bytes": 622517,
+    "sha256": "e27f02e5316e4130cf965af82422fa40956391b03e84797972ffa61e00a5e4d5"
   },
   "SOURCE/dist/assets/mobile.css": {
     "bytes": 10134,

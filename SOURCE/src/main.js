@@ -616,6 +616,7 @@ $("import-save").addEventListener("change", async (e) => {
     for (const id of state.achievements) if (ACHIEVEMENTS.some((a) => a.id === id) && !meta.achievements.includes(id)) meta.achievements.push(id);
     closeModal();
     $("start-screen").hidden = true;
+    audio.start();
     save();
     render();
     phaseModal();
