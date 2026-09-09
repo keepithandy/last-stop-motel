@@ -10,6 +10,16 @@ Open **Settings → Compact mobile layout** to enable the compact version inside
 
 ## Play the release
 
+### Play online
+
+After GitHub Pages is enabled for this repository, the browser version is available at:
+
+https://keepithandy.github.io/last-stop-motel/
+
+Pushing to `main` automatically republishes the playable files through the **Deploy playable game to GitHub Pages** workflow.
+
+### Play offline
+
 1. Extract the entire ZIP into a folder.
 2. Open `index.html` in a current desktop browser with WebGL 2 enabled.
 3. Choose **New campaign**, choose a difficulty, and begin.
