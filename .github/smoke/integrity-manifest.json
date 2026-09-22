@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "runtime": "node",
+  "directory": ".github/smoke",
+  "runner": "run-integrity.mjs",
+  "minimumChecks": 3,
+  "purpose": "Repository integrity only; no application or game behavior."
+}
