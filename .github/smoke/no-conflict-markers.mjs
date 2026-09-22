@@ -1,0 +1,4 @@
+import { readdir, readFile } from 'node:fs/promises';import { extname, join } from 'node:path';
+const ROOT=process.cwd(),SKIP=new Set(['.git','node_modules','dist','build','coverage']),EXTS=new Set(['.js','.mjs','.cjs','.ts','.tsx','.jsx','.json','.html','.css','.md','.yml','.yaml','.txt','.py','.sh','.ps1']),MARKERS=['<'.repeat(7)+' ','='.repeat(7)+'\n','>'.repeat(7)+' '],failures=[];
+async function walk(dir){for(const e of await readdir(dir,{withFileTypes:true})){if(SKIP.has(e.name))continue;const f=join(dir,e.name);if(e.isDirectory()){await walk(f);continue;}if(!EXTS.has(extname(e.name).toLowerCase()))continue;const text=await readFile(f,'utf8');if(MARKERS.some(m=>text.includes(m)))failures.push(f.slice(ROOT.length+1));}}
+await walk(ROOT);if(failures.length){console.error(`Unresolved merge markers found in: ${failures.join(', ')}`);process.exit(1);}console.log('smoke:no-conflict-markers passed');
