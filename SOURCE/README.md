@@ -86,6 +86,6 @@ npm run package
 
 See `RELEASE-NOTES.md` for the final automated results. Checks cover complete campaign simulations, meaningful loss and win paths, endless continuation, room jobs, staff wages, purchases, guest consequences, story affordability, save restoration and rejection, and offline release structure.
 
-This is a self-contained 1.0 game with no placeholder features or planned dependencies required to finish it. Automated simulation is not human playtesting: the manual layout toggle was browser-tested, while 3D rendering and physical-device performance were not verified in this environment. Use the low graphics setting on constrained devices. If WebGL 2 is unavailable, the room register preserves access to gameplay while explaining that the 3D view could not start.
+This is a self-contained 1.0 game with no placeholder features or planned dependencies required to finish it. Automated simulation is not human playtesting. The hosted game was checked in a desktop browser with WebGL rendering, room preparation, a guest arrival and check-in, and the compact layout switch. Physical-device performance, touch ergonomics, and audio playback remain unverified. Use the low graphics setting on constrained devices. If WebGL 2 is unavailable, the room register preserves access to gameplay while explaining that the 3D view could not start.
 
 Three.js is included under its MIT license in `THREE-LICENSE.txt`. No third-party art, audio recordings, or web fonts are used.

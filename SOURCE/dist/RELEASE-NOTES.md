@@ -6,6 +6,12 @@ Compact mode applies the four-tab interface, one bottom panel, lower resolution,
 
 The game engine and save schema are unchanged. The 17 existing automated tests passed, including 72 complete campaign simulations. Browser checks confirmed: full layout on a fresh start; the toggle switches the active campaign to four-tab compact mode; switching off restores all six main tabs; cash ($750), supplies (12), reputation (50) and occupancy (0/6) stay unchanged; enabling compact mode survives a page reload. A redraw cache also prevents unchanged controls from being replaced every UI tick. The test browser lacks WebGL, so real-device 3D performance remains unverified.
 
+## Hosted browser check — September 16, 2026
+
+The [GitHub Pages game](https://keepithandy.github.io/last-stop-motel/) loaded in a desktop browser with the 3D scene visible. A standard campaign began with $750, 12 supplies, and four ready rooms. Cleaning room 102 used one supply and returned it to Ready. The first traveler arrived and paused the clock; Find best room selected room 104, and confirming the $125 check-in increased cash to $875. Switching to compact mode during the campaign displayed four tabs, preserved cash and supplies, and kept the 3D scene visible. All 18 automated tests passed, including the new repository manifest check.
+
+This check does not establish physical-device performance, touch ergonomics, or audible playback. Those still need testing on representative hardware.
+
 ---
 
 ## Original release record

@@ -1,9 +1,20 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFile, stat } from "node:fs/promises";
+import { createHash } from "node:crypto";
 import vm from "node:vm";
 import * as E from "../src/engine.js";
 import { EVENTS } from "../src/content.js";
+test("repository file manifest matches listed files", async () => {
+  const root = new URL("../../", import.meta.url);
+  const manifest = JSON.parse(await readFile(new URL("FILE-MANIFEST.json", root), "utf8"));
+  assert.ok(Object.keys(manifest).length >= 30);
+  for (const [name, entry] of Object.entries(manifest)) {
+    const data = await readFile(new URL(name, root));
+    assert.equal(data.length, entry.bytes, `${name} size`);
+    assert.equal(createHash("sha256").update(data).digest("hex"), entry.sha256, `${name} hash`);
+  }
+});
 test("offline entry point loads only included local assets", async () => {
   const html = await readFile("dist/index.html", "utf8");
   const urls = [...html.matchAll(/(?:src|href)="([^"]+)"/g)].map((m) => m[1]);

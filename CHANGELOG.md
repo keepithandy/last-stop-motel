@@ -1,18 +1,30 @@
 # Changelog
 
-This file records the user-visible game changes, source and package changes, validation results, and repository history for Last Stop Motel. It follows the project history as committed to GitHub. Dates use the repository's commit dates.
+This file records the user-visible game changes, source and package changes, validation results, and repository history for Last Stop Motel. Commit entries use repository dates; verification entries use the date of the check.
 
 ## Current state
 
 - **Current release version:** 1.0.2
-- **Current branch:** `main`
-- **Latest commit:** `bca4529` — Start audio after importing a campaign
 - **Playable game:** repository-root `index.html` with the `assets/` folder kept beside it
+- **Online game:** https://keepithandy.github.io/last-stop-motel/
 - **Editable source:** `SOURCE/`
 - **Save schema:** 1
 - **External services:** none; the game is designed to play offline
 
 ## Unreleased changes after 1.0.2
+
+### 2026-09-16 — Hosted browser and repository integrity check
+
+- Confirmed the published game renders its 3D scene and supports a standard campaign start, room cleaning, an arrival pause, a room suggestion, a paid check-in, and a live switch to compact mode.
+- Confirmed all 18 automated tests pass after adding the manifest check. Physical-device performance, touch controls, and audible playback remain unverified.
+- Corrected the online-play instructions and the repository file manifest. Added an automated check for manifest hashes and sizes, with consistent LF line endings across platforms.
+
+### 2026-09-09 — GitHub Pages deployment
+
+Commit: [`b0e0daa`](https://github.com/keepithandy/last-stop-motel/commit/b0e0daa6d5ae8bba3642f4ed50a616d365c08a7e) — `Deploy playable game to GitHub Pages`
+
+- Added a workflow that publishes the root `index.html` and `assets/` on pushes to `main`.
+- Added the online-play link to the repository README.
 
 ### 2026-09-06 — Imported-save audio startup
 
@@ -165,13 +177,13 @@ Version 1.0.2 established the complete, self-contained offline game release. It 
 
 - [`b578c2a`](https://github.com/keepithandy/last-stop-motel/commit/b578c2ab781c9d7c3bd9c9b3c5722d484cd1bb6c) — Added a generated README cover image and recorded its production prompt in `docs/cover-prompt.txt`.
 - [`9c62b7a`](https://github.com/keepithandy/last-stop-motel/commit/9c62b7afcc359839bb0c2226966e107eb4d3671e) — Replaced the realistic cover with low-poly artwork aligned to the actual game: an overhead desert motel, open rooms, coral bedcovers, teal signs, cacti, parking, and the game's overall visual language.
-- Updated the package manifest after each cover replacement.
+- Updated the repository file manifest after each cover replacement.
 
 ## Repository conventions
 
 - Make gameplay and interface edits in `SOURCE/src/`.
 - Rebuild the playable bundle so `SOURCE/dist/assets/game.js` and root `assets/game.js` remain synchronized.
-- Update `FILE-MANIFEST.json` whenever a tracked packaged file changes.
+- Update `FILE-MANIFEST.json` whenever a listed repository file changes; the release test verifies all listed files.
 - Run `node --test tests/*.test.js` from `SOURCE/` after game-code changes.
 - Keep user-facing version changes, save-schema changes, and compatibility notes documented in this changelog.
 - Treat this file as the project record: add a dated entry for every player-visible feature, fix, balance adjustment, package release, or important tooling change.

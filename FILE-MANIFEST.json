@@ -8,12 +8,12 @@
     "sha256": "f957699d3a1ec76f549e6436d40784c029cc73c55d8171e7b54770bd2f0f6f8a"
   },
   "README.md": {
-    "bytes": 6875,
-    "sha256": "a07c0e286bfcac61843838c589b2823b6434d9f955c440b89c321373a2d7c95e"
+    "bytes": 7218,
+    "sha256": "1c3e9a600f96332454d6426716ee133d2f88b212b84501a75e0e28ebb5f2886f"
   },
   "RELEASE-NOTES.md": {
-    "bytes": 6025,
-    "sha256": "51cae51cba6734c27a2f61bacf178d815e5361607b468deb6f899ffe62da2758"
+    "bytes": 6828,
+    "sha256": "fdd5b0b67e8a64857d6475f126fb40324371d6be102dc6094b4d6bf5383989a4"
   },
   "THREE-LICENSE.txt": {
     "bytes": 1081,
@@ -72,8 +72,8 @@
     "sha256": "d7bd74e49b183cdfbe154496722d0e8238af2ec02e62a2579ea09c087861acac"
   },
   "SOURCE/tests/release.test.js": {
-    "bytes": 2140,
-    "sha256": "2ea4440936261c646b671c8c41381806400f99e5621c63adbe9e65210ca37b63"
+    "bytes": 2719,
+    "sha256": "d7ee72edb571f4b22a8dd8d55aaaf48de1a404a4bffed5b7cbbeeb605c6edf4b"
   },
   "SOURCE/dist/PLAYER-GUIDE.html": {
     "bytes": 6884,
@@ -84,12 +84,12 @@
     "sha256": "f957699d3a1ec76f549e6436d40784c029cc73c55d8171e7b54770bd2f0f6f8a"
   },
   "SOURCE/dist/README.md": {
-    "bytes": 6663,
-    "sha256": "403b79ded4f4965fb829cb17d4f6e116393910676e0bc10ba3c4bd5bf911fc50"
+    "bytes": 6763,
+    "sha256": "e75c9bace38b7178ce93f6c6d5b6e44a7544f0267440d23d3ad2de3ceaddd392"
   },
   "SOURCE/dist/RELEASE-NOTES.md": {
-    "bytes": 6025,
-    "sha256": "51cae51cba6734c27a2f61bacf178d815e5361607b468deb6f899ffe62da2758"
+    "bytes": 6828,
+    "sha256": "fdd5b0b67e8a64857d6475f126fb40324371d6be102dc6094b4d6bf5383989a4"
   },
   "SOURCE/dist/THREE-LICENSE.txt": {
     "bytes": 1081,
@@ -136,12 +136,12 @@
     "sha256": "a7f4b7587a0066d86bedfbc48436d785f9f74af3b7b38548445b1c7a392a4e01"
   },
   "SOURCE/README.md": {
-    "bytes": 6663,
-    "sha256": "403b79ded4f4965fb829cb17d4f6e116393910676e0bc10ba3c4bd5bf911fc50"
+    "bytes": 6763,
+    "sha256": "e75c9bace38b7178ce93f6c6d5b6e44a7544f0267440d23d3ad2de3ceaddd392"
   },
   "SOURCE/RELEASE-NOTES.md": {
-    "bytes": 6025,
-    "sha256": "51cae51cba6734c27a2f61bacf178d815e5361607b468deb6f899ffe62da2758"
+    "bytes": 6828,
+    "sha256": "fdd5b0b67e8a64857d6475f126fb40324371d6be102dc6094b4d6bf5383989a4"
   },
   "SOURCE/vite.config.js": {
     "bytes": 137,
@@ -156,7 +156,11 @@
     "sha256": "fecee549a251c6118831595ce8f5543c991559f724abb982b92d324939110e81"
   },
   "CHANGELOG.md": {
-    "bytes": 11769,
-    "sha256": "cf1b48601ddb60fb7455b0aa78df6788fe00c5a5192b6a448fb634b414944c0f"
+    "bytes": 12727,
+    "sha256": "29c1eb1406df828a8e8d2184b720e4aa34509aaf78d95776934360b8753db2a4"
+  },
+  ".gitattributes": {
+    "bytes": 211,
+    "sha256": "845cc35ee73d94701a41c03d10cc2908e2f3ce03b3ccbb7a2e66d19e5d53b9c9"
   }
 }
