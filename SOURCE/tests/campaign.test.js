@@ -243,6 +243,11 @@ test("invalid, incomplete and hostile saves are rejected without mutating the cu
   for (const fn of [(s2) => s2.cash = "NaN", (s2) => s2.rep = 200, (s2) => s2.rooms.pop(), (s2) => s2.rooms[0].quality = 99, (s2) => s2.rooms[0].id = 3, (s2) => s2.event = "unknown", (s2) => s2.event = "toString", (s2) => s2.difficulty = "__proto__", (s2) => s2.queue = [null], (s2) => s2.phase = "report", (s2) => s2.staff = [{ id: "invalid" }], (s2) => s2.stats = null, (s2) => s2.playerJob = 1, (s2) => s2.ledger.income = -4]) assert.throws(() => E.deserialize(mutate(fn)));
   assert.equal(s.cash, 750);
 });
+test("roadside-service response keeps its effect and adds a small story beat", () => {
+  const choice = EVENTS.lost.choices[1];
+  assert.equal(choice.rep, 1);
+  assert.match(EVENTS.lost.body, /thermos on the counter for whoever comes through next/);
+});
 test("large time advances are bounded and cannot skip a story decision", () => {
   const s = E.newGame("standard", 2);
   E.openNight(s);
