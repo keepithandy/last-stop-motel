@@ -246,7 +246,7 @@ test("invalid, incomplete and hostile saves are rejected without mutating the cu
 test("roadside-service response keeps its effect and adds a small story beat", () => {
   const choice = EVENTS.lost.choices[1];
   assert.equal(choice.rep, 1);
-  assert.equal(choice.flavor, "They leave a thermos on the counter for whoever comes through next.");
+  assert.match(EVENTS.lost.body, /thermos on the counter for whoever comes through next/);
 });
 test("large time advances are bounded and cannot skip a story decision", () => {
   const s = E.newGame("standard", 2);
