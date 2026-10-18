@@ -1,4 +1,4 @@
-const VERSION = "1.0.2";
+const VERSION = "1.1.0";
 const DIFFICULTIES = {
   relaxed: { name: "Scenic route", cash: 1e3, debt: 1700, patience: 1.5, wear: 0.75, description: "More breathing room. $1,700 debt and patient travelers." },
   standard: { name: "The long week", cash: 750, debt: 2300, patience: 1, wear: 1, description: "The intended campaign. $2,300 debt and a motel to rebuild." },
