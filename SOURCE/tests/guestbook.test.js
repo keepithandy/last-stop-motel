@@ -85,3 +85,28 @@ test("malformed room archives and guest identities cannot be imported", () => {
   assert.throws(() => E.deserialize(mutate((x) => x.guestBook = [{ name: NAMES[0], title: GUESTS[0].title, stays: -1, lastNight: 1, lastRoom: 101, lastHappiness: 80 }])));
   assert.throws(() => E.deserialize(mutate((x) => x.guestBook = [{ name: NAMES[0], title: GUESTS[0].title, stays: 1, lastNight: 1, lastRoom: 101, lastHappiness: 80 }, { name: NAMES[0], title: GUESTS[0].title, stays: 1, lastNight: 1, lastRoom: 101, lastHappiness: 80 }])));
 });
+
+test("returning stays unlock milestones and the archive stores only recognized fields", () => {
+  const s = E.newGame("relaxed", 7);
+  s.roomHistory = Array.from({ length: 29 }, () =>
+    ({ night: 1, room: 101, name: NAMES[2], title: GUESTS[0].title,
+      happiness: 80, paid: 100, tip: 5, service: "none" }));
+  assert.ok(E.openNight(s).ok);
+  E.tick(s, 9);
+  const g = s.queue[0];
+  g.returning = true;
+  g.previousRoom = 101;
+  g.previousHappiness = 82;
+  g.visits = 1;
+  assert.ok(E.checkIn(s, g.id, 1).ok);
+  finishNight(s);
+  assert.ok(s.achievements.includes("regular"));
+  assert.ok(s.achievements.includes("archive"));
+  assert.equal(s.roomHistory.length, 30);
+  const raw = JSON.parse(E.serialize(s));
+  raw.state.roomHistory[0].extra = { embedded: "not preserved" };
+  raw.state.guestBook[0].extra = "untrusted";
+  const loaded = E.deserialize(JSON.stringify(raw));
+  assert.equal(Object.hasOwn(loaded.roomHistory[0], "extra"), false);
+  assert.equal(Object.hasOwn(loaded.guestBook[0], "extra"), false);
+});
