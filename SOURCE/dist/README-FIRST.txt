@@ -26,5 +26,8 @@ THIRD-PARTY LICENSE: THREE-LICENSE.txt
 To keep your progress when switching browsers or devices, open
 Settings and export your save. Import that JSON on the new device.
 
-GUESTBOOK: Every stay becomes part of the room archive. Repeat visitors\nremember their favorite rooms; open Guestbook from a room or Ledger.\n\nCOMPACT MODE: Settings > Compact mobile layout. Toggle it on or off
+GUESTBOOK: Every stay becomes part of the room archive. Repeat visitors
+remember their favorite rooms; open Guestbook from a room or Ledger.
+
+COMPACT MODE: Settings > Compact mobile layout. Toggle it on or off
 anytime. Your choice is remembered; your campaign is unchanged.
