@@ -8,7 +8,7 @@ function random(s) {
 const pick = (s, a) => a[Math.floor(random(s) * a.length)];
 function newGame(difficulty = "standard", seed = Date.now()) {
   const config = Object.hasOwn(DIFFICULTIES, difficulty) ? DIFFICULTIES[difficulty] : DIFFICULTIES.standard;
-  const s = { version: VERSION, schema: 1, difficulty: Object.hasOwn(DIFFICULTIES, difficulty) ? difficulty : "standard", seed: seed >>> 0, night: 1, phase: "prep", minute: 0, cash: config.cash, debt: config.debt, rep: 50, supplies: 12, rate: "standard", rooms: [], upgrades: [], staff: [], energy: 100, playerJob: null, queue: [], arrivals: [], eventIndex: 0, event: null, eventHistory: [], history: [], log: [], notifications: [], achievements: [], stats: { hosted: 0, turned: 0, requests: 0, earned: 0, spent: 0, cleaned: 0, repaired: 0, upgraded: 0 }, ledger: { income: 0, expenses: 0, tips: 0, guests: 0 }, endless: false, loan: false, emergencyDelivery: false, lastReport: null, seenIntro: false, outcome: null, nextId: 1 };
+  const s = { version: VERSION, schema: 1, difficulty: Object.hasOwn(DIFFICULTIES, difficulty) ? difficulty : "standard", seed: seed >>> 0, night: 1, phase: "prep", minute: 0, cash: config.cash, debt: config.debt, rep: 50, supplies: 12, rate: "standard", rooms: [], upgrades: [], staff: [], energy: 100, playerJob: null, queue: [], arrivals: [], eventIndex: 0, event: null, eventHistory: [], history: [], roomHistory: [], guestBook: [], log: [], notifications: [], achievements: [], stats: { hosted: 0, turned: 0, requests: 0, earned: 0, spent: 0, cleaned: 0, repaired: 0, upgraded: 0 }, ledger: { income: 0, expenses: 0, tips: 0, guests: 0 }, endless: false, loan: false, emergencyDelivery: false, lastReport: null, seenIntro: false, outcome: null, nextId: 1 };
   for (let i = 0; i < 10; i++) s.rooms.push({ id: i + 1, number: 101 + i, open: i < 6, quality: i === 3 ? 1 : 0, clean: i === 1 ? 35 : i === 4 ? 50 : 100, condition: i === 4 ? 48 : 82, guest: null, job: null, request: null, quiet: i >= 3 });
   log(s, "The keys are yours. Welcome to Last Stop Motel.");
   return s;
@@ -49,6 +49,9 @@ function roomPrice(s, r) {
 function roomStatus(r) {
   return !r.open ? "Closed" : r.job ? { clean: "Cleaning", repair: "Repairing", service: "Guest service" }[r.job.type] || "Working" : r.guest ? "Occupied" : r.clean < 75 ? "Needs cleaning" : r.condition < 35 ? "Needs repair" : "Ready";
 }
+function roomVisits(s, number) {
+  return s.roomHistory.filter((stay) => stay.room === number).slice(-6).reverse();
+}
 function quote(s, r, g) {
   const price = roomPrice(s, r);
   let happiness = 88;
@@ -59,11 +62,42 @@ function quote(s, r, g) {
   if (s.upgrades.includes("coffee")) happiness += 6;
   if (s.upgrades.includes("garden")) happiness += 4;
   if (s.rate === "value") happiness += 5;
+  if (g.returning && g.previousRoom === r.number && g.previousHappiness >= 70) happiness += 6;
   return { price, happiness: clamp(Math.round(happiness), 10, 100), affordable: price <= g.budget };
 }
 function guest(s, index) {
-  const archetype = pick(s, GUESTS.filter((g) => s.night > 2 || g.comfort < 2));
-  return { ...archetype, id: "g" + s.nextId++, name: pick(s, NAMES), budget: archetype.budget + (s.night > 4 ? 10 : 0), arrive: 20 + index * 29 + Math.floor(random(s) * 12), patience: Math.round(80 * DIFFICULTIES[s.difficulty].patience), wait: 0 };
+  const occupiedNames = new Set([...s.arrivals, ...s.queue, ...s.rooms.map((r) => r.guest).filter(Boolean)].map((g) => g.name));
+  const known = s.night > 1 ? s.guestBook.filter((entry) => entry.lastNight < s.night && !occupiedNames.has(entry.name)) : [];
+  const returning = known.length && random(s) < 0.35 ? pick(s, known) : null;
+  const available = NAMES.filter((name) => !occupiedNames.has(name));
+  const newNames = available.filter((name) => !s.guestBook.some((entry) => entry.name === name));
+  const name = returning?.name || pick(s, newNames.length ? newNames : available.length ? available : NAMES);
+  const previous = s.guestBook.find((entry) => entry.name === name);
+  const archetype = previous ? GUESTS.find((type) => type.title === previous.title) : pick(s, GUESTS.filter((type) => s.night > 2 || type.comfort < 2));
+  return {
+    ...archetype, id: "g" + s.nextId++, name,
+    budget: archetype.budget + (s.night > 4 ? 10 : 0),
+    arrive: 20 + index * 29 + Math.floor(random(s) * 12),
+    patience: Math.round(80 * DIFFICULTIES[s.difficulty].patience), wait: 0,
+    ...(previous ? {
+      returning: true, previousRoom: previous.lastRoom, previousHappiness: previous.lastHappiness,
+      visits: previous.stays, text: previous.lastHappiness >= 70
+        ? "I remembered the light out here. Thought I'd stop again."
+        : "Giving this place another try. How are the rooms tonight?"
+    } : {})
+  };
+}
+function rememberStay(s, r, g, tip) {
+  const service = g.service || (r.request ? "unanswered" : "none");
+  const stay = { night: s.night, room: r.number, name: g.name, title: g.title,
+    happiness: Math.round(g.happiness), paid: g.paid, tip, service };
+  s.roomHistory.push(stay);
+  s.roomHistory = s.roomHistory.slice(-200);
+  const prior = s.guestBook.find((entry) => entry.name === g.name);
+  s.guestBook = s.guestBook.filter((entry) => entry.name !== g.name);
+  s.guestBook.unshift({ name: g.name, title: g.title, stays: (prior?.stays || 0) + 1,
+    lastNight: s.night, lastRoom: r.number, lastHappiness: Math.round(g.happiness) });
+  s.guestBook = s.guestBook.slice(0, NAMES.length);
 }
 function openNight(s) {
   if (s.phase !== "prep") return fail("This night has already opened.");
@@ -76,7 +110,8 @@ function openNight(s) {
   s.emergencyDelivery = false;
   s.ledger = { income: 0, expenses: 0, tips: 0, guests: 0 };
   let demand = nightInfo(s).demand + (s.upgrades.includes("sign") ? 1 : 0) + (s.rep >= 80 ? 1 : 0) + (s.endless ? Math.min(4, Math.floor((s.night - 7) / 3)) : 0);
-  s.arrivals = Array.from({ length: demand }, (_, i) => guest(s, i));
+  s.arrivals = [];
+  for (let i = 0; i < demand; i++) s.arrivals.push(guest(s, i));
   const span = 390 / Math.max(1, demand - 1);
   s.arrivals.forEach((g, i) => g.arrive = Math.round(8 + i * span));
   s.energy = clamp(s.energy + 20, 0, 100);
@@ -160,6 +195,7 @@ function finishJob(s, r) {
   if (type === "service") {
     if (r.guest) {
       r.guest.happiness = clamp(r.guest.happiness + 12, 0, 100);
+       r.guest.service = "resolved";
       s.stats.requests++;
       earn(s, 4, true);
       if (s.stats.requests >= 10) unlock(s, "care");
@@ -231,6 +267,7 @@ function tick(s, minutes) {
         g.requestMade = true;
         if (random(s) < 0.7) {
           r.request = { ...pick(s, REQUESTS), remaining: 95, total: 95 };
+           g.service = "pending";
           notify(s, `Room ${r.number} has a guest request.`);
         }
       }
@@ -238,6 +275,7 @@ function tick(s, minutes) {
         r.request.remaining -= dt;
         if (r.request.remaining <= 0) {
           g.happiness = clamp(g.happiness - 18, 0, 100);
+           g.service = "unanswered";
           r.request = null;
           log(s, `Room ${r.number}'s request was left unanswered.`);
         }
@@ -403,6 +441,7 @@ function endNight(s) {
     happiness += g.happiness;
     const tip = g.happiness >= 75 ? Math.round(g.tip * (g.happiness / 100)) : 0;
     if (tip) earn(s, tip, true);
+    rememberStay(s, r, g, tip);
     repChange += g.happiness >= 85 ? 1.5 : g.happiness >= 65 ? 0.4 : g.happiness >= 45 ? -1 : -3;
     r.clean = clamp(r.clean - 50 - Math.floor(random(s) * 25), 0, 100);
     r.condition = clamp(r.condition - (7 + random(s) * 8) * DIFFICULTIES[s.difficulty].wear, 0, 100);
@@ -503,6 +542,26 @@ function deserialize(text) {
   }
   if (raw.playerJob !== null && !raw.rooms.some((r) => r.id === raw.playerJob && r.job?.worker === "player")) throw new Error("Invalid player assignment.");
   for (const w of raw.staff) if (w.job !== null && !raw.rooms.some((r) => r.id === w.job && r.job?.worker === w.id)) throw new Error("Invalid staff assignment.");
+  const validStay = (x) => x && Number.isInteger(x.night) && x.night >= 1 && x.night <= raw.night &&
+    Number.isInteger(x.room) && x.room >= 101 && x.room <= 110 &&
+    NAMES.includes(x.name) && GUESTS.some((g) => g.title === x.title) &&
+    num(x.happiness, 0, 100) && num(x.paid, 0, 1e4) && num(x.tip, 0, 1e4) &&
+    ["none", "pending", "resolved", "unanswered"].includes(x.service);
+  const validRegular = (x) => x && NAMES.includes(x.name) &&
+    GUESTS.some((g) => g.title === x.title) &&
+    Number.isInteger(x.stays) && num(x.stays, 1, 1e5) &&
+    Number.isInteger(x.lastNight) && x.lastNight >= 1 && x.lastNight <= raw.night &&
+    Number.isInteger(x.lastRoom) && x.lastRoom >= 101 && x.lastRoom <= 110 &&
+    num(x.lastHappiness, 0, 100);
+  if (raw.roomHistory !== undefined && (!Array.isArray(raw.roomHistory) || raw.roomHistory.length > 200 || !raw.roomHistory.every(validStay))) throw new Error("Invalid room history.");
+  if (raw.guestBook !== undefined && (!Array.isArray(raw.guestBook) || raw.guestBook.length > NAMES.length || !raw.guestBook.every(validRegular) || new Set(raw.guestBook.map((x) => x.name)).size !== raw.guestBook.length)) throw new Error("Invalid guest book.");
+  const validGuestMemory = (g) => !g ||
+    (g.returning === undefined || typeof g.returning === "boolean") &&
+    (g.previousRoom === undefined || Number.isInteger(g.previousRoom) && g.previousRoom >= 101 && g.previousRoom <= 110) &&
+    (g.previousHappiness === undefined || num(g.previousHappiness, 0, 100)) &&
+    (g.visits === undefined || Number.isInteger(g.visits) && num(g.visits, 1, 1e5)) &&
+    (g.service === undefined || ["none", "pending", "resolved", "unanswered"].includes(g.service));
+  if (![...raw.queue, ...raw.arrivals, ...raw.rooms.map((r) => r.guest)].every(validGuestMemory)) throw new Error("Invalid returning guest data.");
   for (const k of ["endless", "loan", "emergencyDelivery", "seenIntro"]) if (typeof raw[k] !== "boolean") throw new Error("Invalid game flags.");
   if (raw.phase === "ending" && (!raw.outcome || typeof raw.outcome.won !== "boolean" || typeof raw.outcome.title !== "string" || typeof raw.outcome.text !== "string")) throw new Error("Invalid ending.");
   if (raw.phase === "report" && (!raw.lastReport || !raw.history.some((r) => r.night === raw.night && r.night === raw.lastReport.night))) throw new Error("Missing nightly report.");
@@ -512,6 +571,8 @@ function deserialize(text) {
   clean.event = raw.event;
   clean.outcome = raw.outcome;
   clean.notifications = [];
+  clean.roomHistory = raw.roomHistory || [];
+  clean.guestBook = raw.guestBook || [];
   clean.log = Array.isArray(raw.log) ? raw.log.slice(0, 50).filter((x) => x && typeof x.message === "string" && x.message.length < 500 && num(x.night, 0, 1e5) && num(x.time, 0, 480)) : [];
   clean.eventHistory = Array.isArray(raw.eventHistory) ? raw.eventHistory.filter((x) => x && Object.hasOwn(EVENTS, x.event) && Number.isInteger(x.choice) && EVENTS[x.event].choices[x.choice]) : [];
   clean.lastReport = raw.lastReport && raw.history.some((x) => x.night === raw.lastReport.night) ? raw.history.find((x) => x.night === raw.lastReport.night) : null;
@@ -538,6 +599,7 @@ export {
   rest,
   roomPrice,
   roomStatus,
+  roomVisits,
   score,
   serialize,
   setRate,
