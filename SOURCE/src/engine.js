@@ -573,8 +573,11 @@ function deserialize(text) {
   clean.event = raw.event;
   clean.outcome = raw.outcome;
   clean.notifications = [];
-  clean.roomHistory = raw.roomHistory || [];
-  clean.guestBook = raw.guestBook || [];
+  // Imported archives are canonicalized so unknown or oversized extra fields are never re-saved.
+  clean.roomHistory = (raw.roomHistory || []).map(({ night, room, name, title, happiness, paid, tip, service }) =>
+    ({ night, room, name, title, happiness, paid, tip, service }));
+  clean.guestBook = (raw.guestBook || []).map(({ name, title, stays, lastNight, lastRoom, lastHappiness }) =>
+    ({ name, title, stays, lastNight, lastRoom, lastHappiness }));
   clean.log = Array.isArray(raw.log) ? raw.log.slice(0, 50).filter((x) => x && typeof x.message === "string" && x.message.length < 500 && num(x.night, 0, 1e5) && num(x.time, 0, 480)) : [];
   clean.eventHistory = Array.isArray(raw.eventHistory) ? raw.eventHistory.filter((x) => x && Object.hasOwn(EVENTS, x.event) && Number.isInteger(x.choice) && EVENTS[x.event].choices[x.choice]) : [];
   clean.lastReport = raw.lastReport && raw.history.some((x) => x.night === raw.lastReport.night) ? raw.history.find((x) => x.night === raw.lastReport.night) : null;
