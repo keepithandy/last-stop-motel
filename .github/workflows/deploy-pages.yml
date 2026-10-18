@@ -24,11 +24,24 @@ jobs:
       - name: Check out the game
         uses: actions/checkout@v6
 
-      - name: Prepare the playable site
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: SOURCE/package-lock.json
+
+      - name: Rebuild the playable game from source
+        working-directory: SOURCE
+        run: |
+          npm ci
+          npm run build
+          npm test
+
+      - name: Prepare the playable site from tested output
         run: |
           mkdir _site
-          cp index.html _site/
-          cp -R assets _site/
+          cp -R SOURCE/dist/. _site/
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
