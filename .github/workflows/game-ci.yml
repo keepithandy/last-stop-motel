@@ -1,0 +1,39 @@
+name: Game build and campaign validation
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  game:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+      - name: Use Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: SOURCE/package-lock.json
+      - name: Install pinned dependencies
+        working-directory: SOURCE
+        run: npm ci
+      - name: Build the offline game from source
+        working-directory: SOURCE
+        run: npm run build
+      - name: Test campaigns, guestbook and offline assets
+        working-directory: SOURCE
+        run: npm test
+      - name: Assemble and verify the offline release
+        working-directory: SOURCE
+        run: npm run package
+      - name: Publish testable offline ZIP
+        uses: actions/upload-artifact@v4
+        with:
+          name: last-stop-motel-tested-zip
+          path: SOURCE/release/Last-Stop-Motel-*.zip
+          if-no-files-found: error
