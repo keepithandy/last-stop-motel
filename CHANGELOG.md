@@ -1,3 +1,12 @@
+## 1.1.0 — The Guestbook (October 17, 2026)
+
+- Record the latest 200 room stays, including guest experience, payment and request outcomes.
+- Remember up to 24 returning travelers and recognize their prior room and visit history.
+- Give satisfied regulars a small familiarity bonus for returning to their old room.
+- Add room-memory cards and a guestbook modal to desktop and mobile compact layouts.
+- Continue accepting validated 1.0.2 saves, and reject malformed history imports.
+- Test the source, package the offline release, and build GitHub Pages from fresh source in CI.
+
 # Changelog
 
 This file records the user-visible game changes, source and package changes, validation results, and repository history for Last Stop Motel. It follows the project history as committed to GitHub. Dates use the repository's commit dates.
