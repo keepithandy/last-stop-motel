@@ -1,3 +1,17 @@
+# Last Stop Motel 1.1.0 — The Guestbook
+
+October 17, 2026
+
+Rooms now keep a persistent history of up to 200 completed stays. The motel also remembers the last experience of up to 24 named travelers, allowing previous visitors to reappear with consistent archetypes and meaningful references to the room they occupied. A happy prior stay grants a +6 familiarity bonus when returning to the same room. Arrival generation reserves unique names for each night's roster when possible.
+
+New guestbook and room-history interfaces are available in both full and compact layouts. The archive records room number, night, named traveler, guest happiness, payment, tip and guest-request service outcome. Exports include the new records; older 1.0.2 save files continue loading with an empty archive.
+
+Automated coverage now includes completed stays, regulars, save migration, malformed archive rejection, the original campaign simulations, and offline release checks. GitHub Pages and the CI-provided offline ZIP now build from authoritative source with pinned dependencies.
+
+**Release limitations:** physical iOS/Android rendering, browser audio playback, and human campaign balance still require manual validation (issues #4–#6). The old checked-in root bundle remains 1.0.2; use GitHub Pages or the tested CI ZIP for 1.1.0.
+
+---
+
 # Last Stop Motel 1.0.2 — Manual compact mode
 
 The full game now includes a **Settings → Compact mobile layout** toggle. It is off by default and remembered per browser. Both layouts operate on the same running campaign. Turning compact mode off restores the full interface and uses your saved standard graphics preferences. Audio choices are never overwritten by the layout toggle.

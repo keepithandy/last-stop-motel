@@ -2608,3 +2608,20 @@ input[type=range] {
     min-height: 120px;
   }
 }
+
+/* Guestbook · persistent room memories, readable in both layouts */
+.room-memo {
+  margin-top: 1rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid rgba(215, 173, 122, 0.28);
+  border-radius: 12px;
+  background: rgba(22, 19, 23, 0.45);
+}
+.room-memo-title { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; margin-bottom: 0.5rem; }
+.room-memo-title strong { font-size: 0.86rem; letter-spacing: 0.03em; }
+.room-memo p { font-size: 0.8rem; line-height: 1.55; margin: 0.3rem 0; opacity: 0.85; }
+.room-memo p span { display: inline-block; min-width: 2rem; font-weight: 700; color: #efbe87; }
+@media (max-width: 640px) {
+  .room-memo { margin: 0.8rem 0; padding: 0.75rem; }
+  .room-memo-title { flex-wrap: wrap; }
+}

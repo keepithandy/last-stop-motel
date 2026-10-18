@@ -1,6 +1,14 @@
-# Last Stop Motel — 1.0.2
+# Last Stop Motel — 1.1.0
 
 A complete, offline, single-player Three.js management game. Inherit a roadside motel, run seven nights, settle the debt, and earn the right to keep the light on.
+
+## New in 1.1.0: The Guestbook
+
+**Your guests remember the motel.** Every completed room stay now enters a persistent room archive with the traveler, room number, checkout happiness, payment, tip, and request outcome. Returning visitors remember their old rooms and previous stays. A happy guest checking into the same room again receives a small familiarity bonus.
+
+Open **The Guestbook** from the Ledger, a room's history card, or **More → Guestbook & room history** in compact mode. Room panels also show their three most recent stays. History and memories travel with your exported save, including into endless mode. Existing 1.0.2 saves load without losing their campaign progress; their guestbook starts empty.
+
+**Build integrity:** the GitHub Pages deployment now rebuilds and tests the game from `SOURCE/`, rather than deploying the older checked-in `assets/game.js`. The automated Game build and campaign validation workflow also produces a self-contained, tested offline ZIP as an Actions artifact. On GitHub, open a successful workflow run and download `last-stop-motel-tested-zip` (then extract the game ZIP within it). The repository's root-level `assets/game.js` is an older prebuilt bundle; it is not the new 1.1.0 distribution.
 
 ## Compact mobile layout
 
