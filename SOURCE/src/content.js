@@ -62,7 +62,9 @@ const ACHIEVEMENTS = [
   { id: "finish", name: "A place worth keeping", description: "Pay the debt and finish the campaign." },
   { id: "hard", name: "Against the odds", description: "Finish the hardest campaign." },
   { id: "perfect", name: "Five-star roadside", description: "Finish with at least 85 reputation." },
-  { id: "honest", name: "On your own two feet", description: "Finish without taking the emergency loan." }
+  { id: "honest", name: "On your own two feet", description: "Finish without taking the emergency loan." },
+  { id: "regular", name: "Welcome back", description: "Host a returning traveler for another night." },
+  { id: "archive", name: "Guestbook full of stories", description: "Record thirty completed stays at the motel." }
 ];
 const STAFF = [
   { id: "rosa", name: "Rosa", role: "Housekeeper", hire: 90, wage: 26, speed: 1.45, description: "An experienced cleaner. Works through dirty rooms automatically." },
