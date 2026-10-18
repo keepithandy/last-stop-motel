@@ -88,7 +88,7 @@ function guest(s, index) {
   };
 }
 function rememberStay(s, r, g, tip) {
-  const service = g.service || (r.request ? "unanswered" : "none");
+  const service = r.request ? "unanswered" : (g.service || "none");
   const stay = { night: s.night, room: r.number, name: g.name, title: g.title,
     happiness: Math.round(g.happiness), paid: g.paid, tip, service };
   s.roomHistory.push(stay);
@@ -98,6 +98,8 @@ function rememberStay(s, r, g, tip) {
   s.guestBook.unshift({ name: g.name, title: g.title, stays: (prior?.stays || 0) + 1,
     lastNight: s.night, lastRoom: r.number, lastHappiness: Math.round(g.happiness) });
   s.guestBook = s.guestBook.slice(0, NAMES.length);
+  if (g.returning) unlock(s, "regular");
+  if (s.roomHistory.length >= 30) unlock(s, "archive");
 }
 function openNight(s) {
   if (s.phase !== "prep") return fail("This night has already opened.");
@@ -140,7 +142,7 @@ function checkIn(s, guestId, roomId) {
   unlock(s, "first");
   if (s.rooms.filter((r2) => r2.guest).length >= 6) unlock(s, "full");
   if (s.stats.hosted >= 50) unlock(s, "fifty");
-  return ok(`${g.name} \u2192 Room ${r.number} \xB7 +$${q.price}`);
+  return ok(`${g.returning ? "Welcome back, " : ""}${g.name} \u2192 Room ${r.number} \xB7 +${q.price}`);
 }
 function turnAway(s, id) {
   if (!canManage(s) || s.phase !== "night") return fail("The desk is closed.");
@@ -248,7 +250,7 @@ function tick(s, minutes) {
     s.arrivals = s.arrivals.filter((g) => g.arrive > s.minute);
     for (const g of due) {
       s.queue.push(g);
-      notify(s, `${g.name} is waiting at the office.`);
+      notify(s, g.returning ? `${g.name} is waiting again. They remember room ${g.previousRoom}.` : `${g.name} is waiting at the office.`);
     }
     for (const g of [...s.queue]) {
       g.wait += dt;
