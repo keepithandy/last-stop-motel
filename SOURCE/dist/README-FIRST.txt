@@ -1,4 +1,4 @@
-LAST STOP MOTEL — VERSION 1.0.2
+LAST STOP MOTEL — VERSION 1.1.0
 
 1. Extract the ENTIRE ZIP.
 2. Open index.html in a current desktop browser.
@@ -26,5 +26,5 @@ THIRD-PARTY LICENSE: THREE-LICENSE.txt
 To keep your progress when switching browsers or devices, open
 Settings and export your save. Import that JSON on the new device.
 
-COMPACT MODE: Settings > Compact mobile layout. Toggle it on or off
+GUESTBOOK: Every stay becomes part of the room archive. Repeat visitors\nremember their favorite rooms; open Guestbook from a room or Ledger.\n\nCOMPACT MODE: Settings > Compact mobile layout. Toggle it on or off
 anytime. Your choice is remembered; your campaign is unchanged.
